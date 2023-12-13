@@ -21,6 +21,7 @@ class CityService{
             throw {error};
         }
     }
+
     async updatecity(cityId,data){
         try {
             const city =await this.CityRepository.updatecity(cityId,data);
@@ -30,6 +31,7 @@ class CityService{
             throw {error};
         }
     }
+    
     async getcity(cityId){
         try {
             const city =await this.CityRepository.getcity(cityId);

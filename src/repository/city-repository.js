@@ -20,7 +20,7 @@ class CityRepository{
         await City.destroy({
             where :{id:cityId}
         });
-        return city;
+        return true;
     } catch(error){
         console.log("something went wrong");
         throw {error};
