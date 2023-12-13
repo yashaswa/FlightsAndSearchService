@@ -46,7 +46,7 @@ class CityRepository{
    async getcity(){
     try {
         const city =await City.findbyPK(cityId); // instead of where you can use find by pk read in modules queries
-        return City;
+        return city;
     } catch (error) {
         console.log("something went wrong");
         throw {error};
