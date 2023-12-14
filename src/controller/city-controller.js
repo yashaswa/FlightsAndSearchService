@@ -1,10 +1,11 @@
 const { CityService } = require('../services/index')
 
-const cityService =new CityRepository();
+
+const cityService = new CityService();
 
 const create = async (req,res)=>{
 try {
-     const city =await cityService.createcity(req.body)
+     const city =await cityService.createCity(req.body)
      return res.status(201).json({
         data : city,
         success : true,
@@ -24,7 +25,7 @@ try {
 
 const destroy  = async (req,res)=>{
     try {
-        const response = await cityService.deletecity(req.params.id);
+        const response = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
             data : response,
             success: true,
@@ -33,13 +34,19 @@ const destroy  = async (req,res)=>{
         })
     } catch(error){
         console.log(error);
+        return res.status(500).json({
+            data : {},
+            success: false,
+            message: 'Not able to delete the city',
+            err: error
+        })
         
     }
 }
 
 const get = async (req,res)=>{
     try {
-        const response = await cityService.getcity(req.params.id);
+        const response = await cityService.getCity(req.params.id);
         return res.status(200).json({
             data : response,
             success: true,
@@ -59,7 +66,7 @@ const get = async (req,res)=>{
 
 const update = async (req,res)=>{
     try {
-        const response = await cityService.updatecity(req.params.id,req.body);
+        const response = await cityService.updateCity(req.params.id,req.body);
         return res.status(200).json({
             data : response,
             success: true,
@@ -78,7 +85,7 @@ const update = async (req,res)=>{
 }
 
 
-module.exports{
+module.exports = {
     create,
     destroy,
     get,

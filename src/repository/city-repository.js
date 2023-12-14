@@ -1,54 +1,51 @@
 const { City } =require('../models/index');
 
 class CityRepository{
-   async createcity({ name }){
-    try{
-        const city = await City.create({
-            name
-        });
-        return city;
-    }
-    catch(error){
-        console.log("something went wrong");
-        throw {error};
-    }
- }
-
-
-   async deletecity(cityId){
-    try{
-        await City.destroy({
-            where :{id:cityId}
-        });
-        return true;
-    } catch(error){
-        console.log("something went wrong");
-        throw {error};
-    }
-   }
-
-
-
-   async updatecity(cityId,data){try {
-    const city =await City.update(data,{
-        where :{
-            id:cityId
+   async createCity({ name }){
+        try {
+            const city = await City.create({
+                name
+            });
+            return city;
+        } catch (error) {
+           console.log("something went wrong in th e repository layer");
+           throw {error};          
         }
-    });
-    return city;
-   } catch (error) {
-    
    }
-}
 
-
-
-   async getcity(){
+   async deleteCity(cityId){
     try {
-        const city =await City.findbyPK(cityId); // instead of where you can use find by pk read in modules queries
+            await city.destroy({
+                where: {
+                    id: cityId
+                }
+            })
+            return true;
+   } catch (error) {
+    console.log("something went wrong in repository layer");
+    throw {error};
+   }}
+
+   async updateCity(){
+    try {
+        const city =await City.update(data ,{
+            where :{
+                id: cityId
+            }
+        });
         return city;
     } catch (error) {
-        console.log("something went wrong");
+        console.log("something went wrong in repository layer");
+        throw {error};
+    }
+   }
+
+   async getCity(){
+    try {
+        const city =await City.findByPk(cityId);
+        return city;
+    } catch (error) {
+        console.log("something went wrong in repository layer");
         throw {error};
     }
    }
