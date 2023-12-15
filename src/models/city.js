@@ -24,3 +24,9 @@ module.exports = (sequelize, DataTypes) => {
   });
   return City;
 };
+
+
+
+
+
+

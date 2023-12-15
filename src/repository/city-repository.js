@@ -1,5 +1,8 @@
 const { City } =require('../models/index');
 
+
+
+
 class CityRepository{
    async createCity({ name }){
         try {
@@ -15,7 +18,7 @@ class CityRepository{
 
    async deleteCity(cityId){
     try {
-            await city.destroy({
+            await City.destroy({
                 where: {
                     id: cityId
                 }
@@ -26,7 +29,7 @@ class CityRepository{
     throw {error};
    }}
 
-   async updateCity(){
+   async updateCity(cityId,data){
     try {
         const city =await City.update(data ,{
             where :{
@@ -40,9 +43,9 @@ class CityRepository{
     }
    }
 
-   async getCity(){
+   async getCity(cityId){
     try {
-        const city =await City.findByPk(cityId);
+        const city =await City.findByPk(cityId,{attributes: ['id', 'name', 'createdAt', 'updatedAt'],});
         return city;
     } catch (error) {
         console.log("something went wrong in repository layer");

@@ -30,7 +30,7 @@ const destroy  = async (req,res)=>{
             data : response,
             success: true,
             message : 'successfully deleted a city',
-            err :error
+            err :{}
         })
     } catch(error){
         console.log(error);
@@ -51,7 +51,7 @@ const get = async (req,res)=>{
             data : response,
             success: true,
             message : 'successfully fetched a city',
-            err :error
+            err :{}
         }) 
     } catch(error){
         console.log(error);
@@ -71,7 +71,7 @@ const update = async (req,res)=>{
             data : response,
             success: true,
             message : 'successfully updated a city',
-            err :error
+            err :{}
         }) 
     } catch(error){
         console.log(error);
