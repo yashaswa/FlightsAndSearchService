@@ -55,7 +55,8 @@ class CityRepository{
     }
    }
 
-   async getAllCities(filter){//it can be empty  also
+   async getAllCities(filter){//it can be empty  also// ye jo filter hai tu service  me jaake dekh agar name:filter.name likha hai matlab 
+    //ki tu query me name pass karega us par ye check karega ki "p" to p naam se kitne city hai wo bhej dega
     try { if(filter.name) {
         const cities = await City.findAll({attributes: ['id', 'name', 'createdAt', 'updatedAt'],
             where :{
